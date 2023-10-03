@@ -1,0 +1,21 @@
+{
+    "required": true,
+    "minVersion": "0.8",
+    "package": "net.brokenmoon.afloydironchest.mixin",
+    "compatibilityLevel": "JAVA_8",
+    "mixins": [
+        "MixinEntityPlayer",
+        "MixinEntityPlayerMP",
+        "MixinEntityPlayerSP",
+        "MixinMinecraft",
+        "MixinNetClientHandler",
+        "MixinTileEntity"
+    ],
+    "client": [
+    ],
+    "server": [
+    ],
+    "injectors": {
+        "defaultRequire": 1
+  }
+}
