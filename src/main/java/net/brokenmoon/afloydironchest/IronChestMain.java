@@ -8,6 +8,7 @@ import net.fabricmc.api.ModInitializer;
 import net.minecraft.client.sound.block.BlockSounds;
 import net.minecraft.core.block.Block;
 import net.minecraft.core.block.material.Material;
+import net.minecraft.core.block.tag.BlockTags;
 import net.minecraft.core.item.Item;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -40,6 +41,8 @@ public class IronChestMain implements ModInitializer {
             .setTopTexture("ironchesttop.png")
             .setBottomTexture("ironchestbottom.png")
             .setBlockSound(BlockSounds.METAL)
+            .setHardness(2.5f)
+            .setTags(BlockTags.MINEABLE_BY_PICKAXE)
             .build(new IronChest("chest.iron",config.getInt("ids.ironChestID"), Material.metal));
     public static final Block GoldChest = new BlockBuilder(MOD_ID)
             .setSideTextures("goldchestside.png")
@@ -47,6 +50,8 @@ public class IronChestMain implements ModInitializer {
             .setTopTexture("goldchesttop.png")
             .setBottomTexture("goldchestbottom.png")
             .setBlockSound(BlockSounds.METAL)
+            .setHardness(2.5f)
+            .setTags(BlockTags.MINEABLE_BY_PICKAXE)
             .build(new GoldChest("chest.gold",config.getInt("ids.goldChestID"), Material.metal));
     public static final Block DiamondChest = new BlockBuilder(MOD_ID)
             .setSideTextures("diamondchestside.png")
@@ -54,6 +59,8 @@ public class IronChestMain implements ModInitializer {
             .setTopTexture("diamondchesttop.png")
             .setBottomTexture("diamondchestbottom.png")
             .setBlockSound(BlockSounds.METAL)
+            .setHardness(2.5f)
+            .setTags(BlockTags.MINEABLE_BY_PICKAXE)
             .build(new DiamondChest("chest.diamond",config.getInt("ids.diamondChestID"), Material.metal));
     public static final Block SteelChest = new BlockBuilder(MOD_ID)
             .setSideTextures("steelchestside.png")
@@ -61,6 +68,8 @@ public class IronChestMain implements ModInitializer {
             .setTopTexture("steelchesttop.png")
             .setBottomTexture("steelchestbottom.png")
             .setBlockSound(BlockSounds.METAL)
+            .setHardness(2.5f)
+            .setTags(BlockTags.MINEABLE_BY_PICKAXE)
             .build(new SteelChest("chest.steel",config.getInt("ids.steelChestID"), Material.metal));
 
     @Override
