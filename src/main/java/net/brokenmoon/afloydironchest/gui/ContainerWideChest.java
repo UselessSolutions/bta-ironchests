@@ -35,13 +35,31 @@ public class ContainerWideChest extends Container {
     }
 
     @Override
-    public List<Integer> getMoveSlots(InventoryAction inventoryAction, Slot slot, int i, EntityPlayer entityPlayer) {
+    public List<Integer> getMoveSlots(InventoryAction action, Slot slot, int target, EntityPlayer player) {
+        int chestSize = this.numberOfRowsUpper * 12;
+        if (slot.id >= 0 && slot.id < chestSize) {
+            return this.getSlots(0, chestSize, false);
+        }
+        if (action == InventoryAction.MOVE_ALL) {
+            if (slot.id >= chestSize && slot.id < chestSize + 27) {
+                return this.getSlots(chestSize, 27, false);
+            }
+            if (slot.id >= chestSize + 27 && slot.id < chestSize + 36) {
+                return this.getSlots(chestSize + 27, 9, false);
+            }
+        } else if (slot.id >= chestSize && slot.id < chestSize + 36) {
+            return this.getSlots(chestSize, 36, false);
+        }
         return null;
     }
 
     @Override
-    public List<Integer> getTargetSlots(InventoryAction inventoryAction, Slot slot, int i, EntityPlayer entityPlayer) {
-        return null;
+    public List<Integer> getTargetSlots(InventoryAction action, Slot slot, int target, EntityPlayer player) {
+        int chestSize = this.numberOfRowsUpper * 12;
+        if (slot.id < chestSize) {
+            return this.getSlots(chestSize, 36, true);
+        }
+        return this.getSlots(0, chestSize, false);
     }
 
     @Override
