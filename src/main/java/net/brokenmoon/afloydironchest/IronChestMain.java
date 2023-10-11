@@ -10,13 +10,13 @@ import net.minecraft.core.block.Block;
 import net.minecraft.core.block.material.Material;
 import net.minecraft.core.block.tag.BlockTags;
 import net.minecraft.core.item.Item;
+import net.minecraft.core.item.ItemStack;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import turniplabs.halplibe.helper.BlockBuilder;
 import turniplabs.halplibe.helper.RecipeHelper;
 import turniplabs.halplibe.util.ConfigHandler;
 
-import java.io.*;
 import java.util.Properties;
 
 
@@ -35,7 +35,7 @@ public class IronChestMain implements ModInitializer {
         config = new ConfigHandler(MOD_ID, prop);
     }
 
-    public static final Block IronChest = new BlockBuilder(MOD_ID)
+    public static final Block ironChest = new BlockBuilder(MOD_ID)
             .setSideTextures("ironchestside.png")
             .setNorthTexture("ironchestfront.png")
             .setTopTexture("ironchesttop.png")
@@ -44,7 +44,7 @@ public class IronChestMain implements ModInitializer {
             .setHardness(2.5f)
             .setTags(BlockTags.MINEABLE_BY_PICKAXE)
             .build(new IronChest("chest.iron",config.getInt("ids.ironChestID"), Material.metal));
-    public static final Block GoldChest = new BlockBuilder(MOD_ID)
+    public static final Block goldChest = new BlockBuilder(MOD_ID)
             .setSideTextures("goldchestside.png")
             .setNorthTexture("goldchestfront.png")
             .setTopTexture("goldchesttop.png")
@@ -53,7 +53,7 @@ public class IronChestMain implements ModInitializer {
             .setHardness(2.5f)
             .setTags(BlockTags.MINEABLE_BY_PICKAXE)
             .build(new GoldChest("chest.gold",config.getInt("ids.goldChestID"), Material.metal));
-    public static final Block DiamondChest = new BlockBuilder(MOD_ID)
+    public static final Block diamondChest = new BlockBuilder(MOD_ID)
             .setSideTextures("diamondchestside.png")
             .setNorthTexture("diamondchestfront.png")
             .setTopTexture("diamondchesttop.png")
@@ -62,7 +62,7 @@ public class IronChestMain implements ModInitializer {
             .setHardness(2.5f)
             .setTags(BlockTags.MINEABLE_BY_PICKAXE)
             .build(new DiamondChest("chest.diamond",config.getInt("ids.diamondChestID"), Material.metal));
-    public static final Block SteelChest = new BlockBuilder(MOD_ID)
+    public static final Block steelChest = new BlockBuilder(MOD_ID)
             .setSideTextures("steelchestside.png")
             .setNorthTexture("steelchestfront.png")
             .setTopTexture("steelchesttop.png")
@@ -76,40 +76,40 @@ public class IronChestMain implements ModInitializer {
     public void onInitialize() {
         LOGGER.info("AFloydIronChest initialized.");
         //Recipes
-        RecipeHelper.Crafting.createRecipe(IronChest, 1, new Object[]{
+        RecipeHelper.craftingManager.addRecipe(new ItemStack(ironChest, 1),true, false, new Object[]{
                 "AAA",
                 "ABA",
                 "AAA",
                 'A', Item.ingotIron,
                 'B', Block.chestPlanksOak
         });
-        RecipeHelper.Crafting.createRecipe(IronChest, 1, new Object[]{
+        RecipeHelper.craftingManager.addRecipe(new ItemStack(ironChest, 1),true,false, new Object[]{
                 "AAA",
                 "ABA",
                 "AAA",
                 'A', Item.ingotIron,
                 'B', Block.chestPlanksOakPainted
         });
-        RecipeHelper.Crafting.createRecipe(GoldChest, 1, new Object[]{
+        RecipeHelper.Crafting.createRecipe(goldChest, 1, new Object[]{
                 "AAA",
                 "ABA",
                 "AAA",
                 'A', Item.ingotGold,
-                'B', IronChest
+                'B', ironChest
         });
-        RecipeHelper.Crafting.createRecipe(DiamondChest, 1, new Object[]{
+        RecipeHelper.Crafting.createRecipe(diamondChest, 1, new Object[]{
                 "AAA",
                 "ABA",
                 "AAA",
                 'A', Item.diamond,
-                'B', GoldChest
+                'B', goldChest
         });
-        RecipeHelper.Crafting.createRecipe(SteelChest, 1, new Object[]{
+        RecipeHelper.Crafting.createRecipe(steelChest, 1, new Object[]{
                 "AAA",
                 "ABA",
                 "AAA",
                 'A', Item.ingotSteel,
-                'B', GoldChest
+                'B', goldChest
         });
     }
 }
