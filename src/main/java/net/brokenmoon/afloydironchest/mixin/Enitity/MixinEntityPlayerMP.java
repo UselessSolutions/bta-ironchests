@@ -1,4 +1,4 @@
-package net.brokenmoon.afloydironchest.mixin;
+package net.brokenmoon.afloydironchest.mixin.Enitity;
 
 import net.brokenmoon.afloydironchest.IronChestMain;
 import net.brokenmoon.afloydironchest.MixinInterfaces.IEntityPlayer;

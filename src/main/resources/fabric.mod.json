@@ -33,6 +33,7 @@
     "halplibe": ">=2.1.6"
   },
   "suggests": {
+    "btwaila": ">=0.2.2"
   },
   "icon": "icon.png"
 }

@@ -1,4 +1,4 @@
-package net.brokenmoon.afloydironchest.mixin;
+package net.brokenmoon.afloydironchest.mixin.Enitity;
 
 import net.brokenmoon.afloydironchest.tileEntities.TileEntityDiamondChest;
 import net.brokenmoon.afloydironchest.tileEntities.TileEntityGoldChest;

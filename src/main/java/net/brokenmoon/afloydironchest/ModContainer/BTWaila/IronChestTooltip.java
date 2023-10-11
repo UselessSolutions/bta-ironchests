@@ -4,7 +4,6 @@ import net.brokenmoon.afloydironchest.tileEntities.*;
 import net.minecraft.core.block.entity.TileEntity;
 import net.minecraft.core.item.ItemStack;
 import net.minecraft.core.player.inventory.IInventory;
-import org.lwjgl.opengl.GL11;
 import toufoumaster.btwaila.BTWaila;
 import toufoumaster.btwaila.IBTWailaCustomBlockTooltip;
 import toufoumaster.btwaila.TooltipGroup;
