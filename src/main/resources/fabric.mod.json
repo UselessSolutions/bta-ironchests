@@ -19,6 +19,9 @@
   "entrypoints": {
     "main": [
       "net.brokenmoon.afloydironchest.IronChestMain"
+    ],
+    "btwaila": [
+      "net.brokenmoon.afloydironchest.ModContainer.BTWaila.BTWailaPlugin"
     ]
   },
   "mixins": [
