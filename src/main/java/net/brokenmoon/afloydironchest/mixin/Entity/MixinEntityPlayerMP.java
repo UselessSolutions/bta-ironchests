@@ -1,4 +1,4 @@
-package net.brokenmoon.afloydironchest.mixin.Enitity;
+package net.brokenmoon.afloydironchest.mixin.Entity;
 
 import net.brokenmoon.afloydironchest.IronChestMain;
 import net.brokenmoon.afloydironchest.MixinInterfaces.IEntityPlayer;
@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 
-@Mixin(value = EntityPlayerMP.class, remap = false)
+@Mixin(value = EntityPlayerMP.class, remap = false, priority = 2000)
 public class MixinEntityPlayerMP implements IEntityPlayer {
 
     @Shadow
@@ -23,20 +23,19 @@ public class MixinEntityPlayerMP implements IEntityPlayer {
     public NetServerHandler playerNetServerHandler;
     @Unique
     private EntityPlayerMP thisAs = (EntityPlayerMP)(Object)this;
-
-
+    @Unique
     public void displayGUIIronChest(IInventory iinventory) {
         this.getNextWindowId();
-        NetServerHandler.logger.info(thisAs.username + " interacted with iron chest at (" + thisAs.x + ", " + thisAs.y + ", " + thisAs.z + ")");
+        IronChestMain.logNetwork(thisAs.username + " interacted with iron chest at (" + thisAs.x + ", " + thisAs.y + ", " + thisAs.z + ")");
         this.playerNetServerHandler.sendPacket(new Packet100OpenWindow(this.currentWindowId, 0, iinventory.getInvName(), iinventory.getSizeInventory()));
         ((EntityPlayerMP)(Object)this).craftingInventory = new ContainerChest(((EntityPlayerMP)(Object)this).inventory, iinventory);
         ((EntityPlayerMP)(Object)this).craftingInventory.windowId = this.currentWindowId;
         ((EntityPlayerMP)(Object)this).craftingInventory.onContainerInit(((EntityPlayerMP)(Object)this));
     }
-
+    @Unique
     public void displayGUIDiamondChest(IInventory iinventory) {
         this.getNextWindowId();
-        NetServerHandler.logger.info(thisAs.username + " interacted with iron chest at (" + thisAs.x + ", " + thisAs.y + ", " + thisAs.z + ")");
+        IronChestMain.logNetwork(thisAs.username + " interacted with iron chest at (" + thisAs.x + ", " + thisAs.y + ", " + thisAs.z + ")");
         this.playerNetServerHandler.sendPacket(new Packet100OpenWindow(this.currentWindowId, IronChestMain.config.getInt("ids.diamondWindowID"), iinventory.getInvName(), iinventory.getSizeInventory()));
         ((EntityPlayerMP)(Object)this).craftingInventory = new ContainerWideChest(((EntityPlayerMP)(Object)this).inventory, iinventory);
         ((EntityPlayerMP)(Object)this).craftingInventory.windowId = this.currentWindowId;
