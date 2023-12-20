@@ -17,7 +17,10 @@
 
   "environment": "*",
   "entrypoints": {
-    "main": [
+    "beforeGameStart": [
+      "net.brokenmoon.afloydironchest.IronChestMain"
+    ],
+    "afterGameStart": [
       "net.brokenmoon.afloydironchest.IronChestMain"
     ],
     "recipesReady": [

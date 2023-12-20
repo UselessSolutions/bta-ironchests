@@ -17,10 +17,6 @@ public class IronChestRecipes implements RecipeEntrypoint {
     public void onRecipesReady() {
         IRONCHESTS.register("workbench", WORKBENCH);
         Registries.RECIPES.register("ironchest", IRONCHESTS);
-        Registries.ITEM_GROUPS.register("ironchest:ironchest",Registries.stackListOf(IronChestMain.ironChest));
-        Registries.ITEM_GROUPS.register("ironchest:goldchest", Registries.stackListOf(IronChestMain.goldChest));
-        Registries.ITEM_GROUPS.register("ironchest:diamondchest", Registries.stackListOf(IronChestMain.diamondChest));
-        Registries.ITEM_GROUPS.register("ironchest:steelchest", Registries.stackListOf(IronChestMain.steelChest));
         DataLoader.loadRecipes("/assets/ironchest/recipes/workbench.json");
     }
 }

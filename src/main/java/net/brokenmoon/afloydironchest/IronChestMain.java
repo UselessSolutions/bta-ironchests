@@ -1,24 +1,21 @@
 package net.brokenmoon.afloydironchest;
 
-import net.brokenmoon.afloydironchest.blocks.DiamondChest;
-import net.brokenmoon.afloydironchest.blocks.GoldChest;
-import net.brokenmoon.afloydironchest.blocks.IronChest;
-import net.brokenmoon.afloydironchest.blocks.SteelChest;
+import net.brokenmoon.afloydironchest.tileEntities.TileEntityDiamondChest;
+import net.brokenmoon.afloydironchest.tileEntities.TileEntityGoldChest;
+import net.brokenmoon.afloydironchest.tileEntities.TileEntityIronChest;
+import net.brokenmoon.afloydironchest.tileEntities.TileEntitySteelChest;
 import net.fabricmc.api.ModInitializer;
-import net.minecraft.client.sound.block.BlockSounds;
-import net.minecraft.core.block.Block;
-import net.minecraft.core.block.material.Material;
-import net.minecraft.core.block.tag.BlockTags;
 import net.minecraft.server.net.handler.NetServerHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import turniplabs.halplibe.helper.BlockBuilder;
+import turniplabs.halplibe.helper.EntityHelper;
 import turniplabs.halplibe.util.ConfigHandler;
+import turniplabs.halplibe.util.GameStartEntrypoint;
 
 import java.util.Properties;
 
 
-public class IronChestMain implements ModInitializer {
+public class IronChestMain implements GameStartEntrypoint {
     public static final String MOD_ID = "ironchest";
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
     public static final ConfigHandler config;
@@ -33,50 +30,23 @@ public class IronChestMain implements ModInitializer {
         config = new ConfigHandler(MOD_ID, prop);
     }
 
-    public static final Block ironChest = new BlockBuilder(MOD_ID)
-            .setSideTextures("ironchestside.png")
-            .setNorthTexture("ironchestfront.png")
-            .setTopTexture("ironchesttop.png")
-            .setBottomTexture("ironchestbottom.png")
-            .setBlockSound(BlockSounds.METAL)
-            .setHardness(2.5f)
-            .setTags(BlockTags.MINEABLE_BY_PICKAXE)
-            .build(new IronChest("chest.iron",config.getInt("ids.ironChestID"), Material.metal));
-    public static final Block goldChest = new BlockBuilder(MOD_ID)
-            .setSideTextures("goldchestside.png")
-            .setNorthTexture("goldchestfront.png")
-            .setTopTexture("goldchesttop.png")
-            .setBottomTexture("goldchestbottom.png")
-            .setBlockSound(BlockSounds.METAL)
-            .setHardness(2.5f)
-            .setTags(BlockTags.MINEABLE_BY_PICKAXE)
-            .build(new GoldChest("chest.gold",config.getInt("ids.goldChestID"), Material.metal));
-    public static final Block diamondChest = new BlockBuilder(MOD_ID)
-            .setSideTextures("diamondchestside.png")
-            .setNorthTexture("diamondchestfront.png")
-            .setTopTexture("diamondchesttop.png")
-            .setBottomTexture("diamondchestbottom.png")
-            .setBlockSound(BlockSounds.METAL)
-            .setHardness(2.5f)
-            .setTags(BlockTags.MINEABLE_BY_PICKAXE)
-            .build(new DiamondChest("chest.diamond",config.getInt("ids.diamondChestID"), Material.metal));
-    public static final Block steelChest = new BlockBuilder(MOD_ID)
-            .setSideTextures("steelchestside.png")
-            .setNorthTexture("steelchestfront.png")
-            .setTopTexture("steelchesttop.png")
-            .setBottomTexture("steelchestbottom.png")
-            .setBlockSound(BlockSounds.METAL)
-            .setHardness(2.5f)
-            .setTags(BlockTags.MINEABLE_BY_PICKAXE)
-            .build(new SteelChest("chest.steel",config.getInt("ids.steelChestID"), Material.metal));
 
-    @Override
-    public void onInitialize() {
-        LOGGER.info("AFloydIronChest initialized.");
-        //Recipes
-//
-    }
+
     public static void logNetwork(String message){ // Might fix some weird class missing crash
         NetServerHandler.logger.info(message);
+    }
+
+    @Override
+    public void beforeGameStart() {
+        ModBlocks.init();
+    }
+
+    @Override
+    public void afterGameStart() {
+        EntityHelper.createTileEntity(TileEntityIronChest.class, "Iron Chest");
+        EntityHelper.createTileEntity(TileEntityGoldChest.class, "Gold Chest");
+        EntityHelper.createTileEntity(TileEntityDiamondChest.class, "Diamond Chest");
+        EntityHelper.createTileEntity(TileEntitySteelChest.class, "Steel Chest");
+        LOGGER.info("AFloydIronChest initialized.");
     }
 }

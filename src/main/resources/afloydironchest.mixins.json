@@ -4,16 +4,15 @@
   "package": "net.brokenmoon.afloydironchest.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
-    "MixinNetClientHandler",
     "Entity.MixinEntityPlayer",
-    "Entity.MixinEntityPlayerMP",
-    "Entity.MixinEntityPlayerSP",
-    "Entity.MixinTileEntity",
     "Entity.MixinTileEntityTrommel"
   ],
   "client": [
+    "MixinNetClientHandler",
+    "Entity.MixinEntityPlayerSP"
   ],
   "server": [
+    "Entity.MixinEntityPlayerMP"
   ],
   "injectors": {
     "defaultRequire": 1

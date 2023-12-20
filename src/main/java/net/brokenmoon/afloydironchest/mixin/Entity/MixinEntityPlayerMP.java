@@ -22,7 +22,7 @@ public class MixinEntityPlayerMP implements IEntityPlayer {
     @Shadow
     public NetServerHandler playerNetServerHandler;
     @Unique
-    private EntityPlayerMP thisAs = (EntityPlayerMP)(Object)this;
+    private final EntityPlayerMP thisAs = (EntityPlayerMP)(Object)this;
     @Unique
     public void displayGUIIronChest(IInventory iinventory) {
         this.getNextWindowId();

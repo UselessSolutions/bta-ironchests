@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.Unique;
 @Mixin(value = EntityPlayerSP.class, remap = false)
 public class MixinEntityPlayerSP implements IEntityPlayer {
     @Unique
-    private EntityPlayerSP thisAs = (EntityPlayerSP)(Object)this;
+    private final EntityPlayerSP thisAs = (EntityPlayerSP)(Object)this;
     @Shadow
     protected Minecraft mc;
     public void displayGUIIronChest(IInventory iinventory) {
