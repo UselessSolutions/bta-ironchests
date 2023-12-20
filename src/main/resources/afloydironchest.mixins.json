@@ -2,17 +2,14 @@
   "required": true,
   "minVersion": "0.8",
   "package": "net.brokenmoon.afloydironchest.mixin",
-  "plugin": "net.brokenmoon.afloydironchest.IronChestMixinPlugin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
-    "MixinMinecraft",
     "MixinNetClientHandler",
     "Entity.MixinEntityPlayer",
     "Entity.MixinEntityPlayerMP",
     "Entity.MixinEntityPlayerSP",
     "Entity.MixinTileEntity",
-    "Entity.MixinTileEntityTrommel",
-    "Modded.BTWaila.GuiBlockOverlayAccessor"
+    "Entity.MixinTileEntityTrommel"
   ],
   "client": [
   ],

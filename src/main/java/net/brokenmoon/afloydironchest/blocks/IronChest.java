@@ -22,14 +22,14 @@ public class IronChest extends BlockTileEntityRotatable {
     }
 
     @Override
-    public void onBlockAdded(World world, int i, int j, int k) {
-        super.onBlockAdded(world, i, j, k);
-        this.setDefaultDirection(world, i, j, k);
+    public void onBlockAdded(World world, int x, int y, int z) {
+        super.onBlockAdded(world, x, y, z);
+        this.setDefaultDirection(world, x, y, z);
     }
 
     @Override
-    public void onBlockRemoval(World world, int i, int j, int k) {
-        TileEntityBigChest te = (TileEntityBigChest)world.getBlockTileEntity(i, j, k);
+    public void onBlockRemoved(World world, int x, int y, int z, int data) {
+        TileEntityBigChest te = (TileEntityBigChest)world.getBlockTileEntity(x, y, z);
         for (int l = 0; l < te.getSizeInventory(); ++l) {
             ItemStack itemstack = te.getStackInSlot(l);
             if (itemstack == null) continue;
@@ -42,7 +42,7 @@ public class IronChest extends BlockTileEntityRotatable {
                     i1 = itemstack.stackSize;
                 }
                 itemstack.stackSize -= i1;
-                EntityItem entityitem = new EntityItem(world, (float)i + f, (float)j + f1, (float)k + f2, new ItemStack(itemstack.itemID, i1, itemstack.getMetadata()));
+                EntityItem entityitem = new EntityItem(world, (float)x + f, (float)y + f1, (float)z + f2, new ItemStack(itemstack.itemID, i1, itemstack.getMetadata()));
                 float f3 = 0.05f;
                 entityitem.xd = (float)this.random.nextGaussian() * f3;
                 entityitem.yd = (float)this.random.nextGaussian() * f3 + 0.2f;
@@ -50,7 +50,7 @@ public class IronChest extends BlockTileEntityRotatable {
                 world.entityJoinedWorld(entityitem);
             }
         }
-        super.onBlockRemoval(world, i, j, k);
+        super.onBlockRemoved(world, x, y, z, data);
     }
     @Override
     public boolean blockActivated(World world, int x, int y, int z, EntityPlayer entityplayer) {

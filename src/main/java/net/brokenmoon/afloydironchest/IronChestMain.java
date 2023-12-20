@@ -9,13 +9,10 @@ import net.minecraft.client.sound.block.BlockSounds;
 import net.minecraft.core.block.Block;
 import net.minecraft.core.block.material.Material;
 import net.minecraft.core.block.tag.BlockTags;
-import net.minecraft.core.item.Item;
-import net.minecraft.core.item.ItemStack;
 import net.minecraft.server.net.handler.NetServerHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import turniplabs.halplibe.helper.BlockBuilder;
-import turniplabs.halplibe.helper.RecipeHelper;
 import turniplabs.halplibe.util.ConfigHandler;
 
 import java.util.Properties;
@@ -77,41 +74,7 @@ public class IronChestMain implements ModInitializer {
     public void onInitialize() {
         LOGGER.info("AFloydIronChest initialized.");
         //Recipes
-        RecipeHelper.craftingManager.addRecipe(new ItemStack(ironChest, 1),true, false, new Object[]{
-                "AAA",
-                "ABA",
-                "AAA",
-                'A', Item.ingotIron,
-                'B', Block.chestPlanksOak
-        });
-        RecipeHelper.craftingManager.addRecipe(new ItemStack(ironChest, 1),true,false, new Object[]{
-                "AAA",
-                "ABA",
-                "AAA",
-                'A', Item.ingotIron,
-                'B', Block.chestPlanksOakPainted
-        });
-        RecipeHelper.Crafting.createRecipe(goldChest, 1, new Object[]{
-                "AAA",
-                "ABA",
-                "AAA",
-                'A', Item.ingotGold,
-                'B', ironChest
-        });
-        RecipeHelper.Crafting.createRecipe(diamondChest, 1, new Object[]{
-                "AAA",
-                "ABA",
-                "AAA",
-                'A', Item.diamond,
-                'B', goldChest
-        });
-        RecipeHelper.Crafting.createRecipe(steelChest, 1, new Object[]{
-                "AAA",
-                "ABA",
-                "AAA",
-                'A', Item.ingotSteel,
-                'B', goldChest
-        });
+//
     }
     public static void logNetwork(String message){ // Might fix some weird class missing crash
         NetServerHandler.logger.info(message);

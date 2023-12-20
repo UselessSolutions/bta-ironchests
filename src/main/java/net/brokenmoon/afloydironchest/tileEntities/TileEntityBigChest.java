@@ -6,6 +6,8 @@ import net.minecraft.core.entity.player.EntityPlayer;
 import net.minecraft.core.item.ItemStack;
 import net.minecraft.core.player.inventory.IInventory;
 import com.mojang.nbt.CompoundTag;
+import net.minecraft.core.player.inventory.InventorySorter;
+
 public abstract class TileEntityBigChest extends TileEntity implements IInventory {
     protected ItemStack[] contents;
 
@@ -95,10 +97,13 @@ public abstract class TileEntityBigChest extends TileEntity implements IInventor
 
     @Override
     public boolean canInteractWith(EntityPlayer entityPlayer) {
-        if (this.worldObj.getBlockTileEntity(this.xCoord, this.yCoord, this.zCoord) != this) {
+        if (this.worldObj.getBlockTileEntity(this.x, this.y, this.z) != this) {
             return false;
         } else {
-            return entityPlayer.distanceToSqr((double)this.xCoord + 0.5, (double)this.yCoord + 0.5, (double)this.zCoord + 0.5) <= 64.0;
+            return entityPlayer.distanceToSqr((double)this.x + 0.5, (double)this.y + 0.5, (double)this.z + 0.5) <= 64.0;
         }
+    }
+    public void sortInventory(){
+        InventorySorter.sortInventory(this.contents);
     }
 }

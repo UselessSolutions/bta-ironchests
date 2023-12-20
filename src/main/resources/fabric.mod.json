@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "id": "afloydironchest",
-  "version": "2.1.1",
+  "id": "ironchest",
+  "version": "$version",
 
-  "name": "Astoria's Iron Chest",
+  "name": "Astoria's Iron Chests",
   "description": "Simple expanded chests mod.",
   "authors": [
     "Astoria, Useless"
@@ -20,8 +20,11 @@
     "main": [
       "net.brokenmoon.afloydironchest.IronChestMain"
     ],
+    "recipesReady": [
+      "net.brokenmoon.afloydironchest.IronChestRecipes"
+    ],
     "btwaila": [
-      "net.brokenmoon.afloydironchest.ModContainer.BTWaila.BTWailaPlugin"
+      "net.brokenmoon.afloydironchest.ModContainer.BTWaila.WailaPlugin"
     ]
   },
   "mixins": [
@@ -30,10 +33,10 @@
 
   "depends": {
     "fabricloader": ">=0.13.3",
-    "halplibe": ">=2.1.6"
+    "halplibe": ">=3.0.3"
   },
   "suggests": {
-    "btwaila": ">=0.2.2"
+    "btwaila": ">=1.0.1"
   },
   "icon": "icon.png"
 }

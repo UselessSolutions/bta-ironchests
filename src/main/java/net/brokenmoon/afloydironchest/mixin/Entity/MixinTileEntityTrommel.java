@@ -18,7 +18,7 @@ public class MixinTileEntityTrommel extends TileEntity {
     private void addIronChestToTrommel(int slotIndex, CallbackInfo ci, ItemStack itemResult, int xOffset, int zOffset, int meta, int adjacentId){
         IInventory chest = null;
         if (Block.blocksList[adjacentId] instanceof IronChest) {
-            chest = (IInventory) worldObj.getBlockTileEntity(this.xCoord + xOffset, this.yCoord, this.zCoord + zOffset);
+            chest = (IInventory) worldObj.getBlockTileEntity(this.x + xOffset, this.y, this.z + zOffset);
         }
         if (chest != null) {
             ItemStack slot;
