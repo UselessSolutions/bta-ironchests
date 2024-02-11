@@ -1,2 +1,2 @@
 # bta-ironchests
- Iron chest for bta, updated version of Astoria's Iron CHests
+ Iron chest for bta, updated version of Astoria's Iron Chests
