@@ -1,5 +1,5 @@
 plugins {
-	id 'babric-loom' version '1.1.+'
+	id 'babric-loom' version '1.4.+'
 	id 'java'
 }
 
@@ -101,8 +101,8 @@ dependencies {
 	// If you do not need Halplibe you can comment this line out or delete this line
 	modImplementation "com.github.Turnip-Labs:bta-halplibe:${project.halplibe_version}"
 	//modImplementation files("/lib/halplibe-3.0.4-b.jar")
-	modImplementation "ModMenu:ModMenu:2.0.3"
-	modImplementation "BTWaila:btwaila:1.0.2-7.1"
+	modImplementation "ModMenu:ModMenu:2.0.4"
+	modImplementation "BTWaila:btwaila:1.0.9-7.1"
 //	modImplementation "BTANoNameDyes:noname_dyes:1.0"
 
 	implementation "org.slf4j:slf4j-api:1.8.0-beta4"
@@ -124,7 +124,7 @@ java {
 	withSourcesJar()
 }
 
-tasks.withType(JavaCompile) {
+tasks.withType(JavaCompile).configureEach {
 	options.release.set 8
 }
 

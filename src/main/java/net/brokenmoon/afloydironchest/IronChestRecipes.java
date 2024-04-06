@@ -17,6 +17,11 @@ public class IronChestRecipes implements RecipeEntrypoint {
     public void onRecipesReady() {
         IRONCHESTS.register("workbench", WORKBENCH);
         Registries.RECIPES.register("ironchest", IRONCHESTS);
-        DataLoader.loadRecipes("/assets/ironchest/recipes/workbench.json");
+        DataLoader.loadRecipesFromFile("/assets/ironchest/recipes/workbench.json");
+    }
+
+    @Override
+    public void initNamespaces() {
+
     }
 }
