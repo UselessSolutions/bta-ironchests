@@ -4,11 +4,11 @@ import net.brokenmoon.afloydironchest.blocks.DiamondChest;
 import net.brokenmoon.afloydironchest.blocks.GoldChest;
 import net.brokenmoon.afloydironchest.blocks.IronChest;
 import net.brokenmoon.afloydironchest.blocks.SteelChest;
-import net.minecraft.client.sound.block.BlockSounds;
 import net.minecraft.core.block.Block;
 import net.minecraft.core.block.material.Material;
 import net.minecraft.core.block.tag.BlockTags;
 import net.minecraft.core.item.Item;
+import net.minecraft.core.sound.BlockSounds;
 import turniplabs.halplibe.helper.BlockBuilder;
 
 import static net.brokenmoon.afloydironchest.IronChestMain.MOD_ID;
