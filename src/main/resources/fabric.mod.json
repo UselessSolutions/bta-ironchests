@@ -36,7 +36,8 @@
 
   "depends": {
     "fabricloader": ">=0.13.3",
-    "halplibe": ">=3.0.3"
+    "halplibe": ">=3.5.2",
+    "minecraft": ">=7.1"
   },
   "suggests": {
     "btwaila": ">=1.0.1"
