@@ -23,7 +23,7 @@ public class MixinNetClientHandler {
     public void injectMethod(Packet100OpenWindow packet100openwindow, CallbackInfo info) {
         if (packet100openwindow.inventoryType == IronChestMain.config.getInt("ids.diamondWindowID")) {
             TileEntityDiamondChest dchest = new TileEntityDiamondChest();
-            ((IEntityPlayer)this.mc.thePlayer).displayGUIDiamondChest(dchest);
+            ((IEntityPlayer)this.mc.thePlayer).afloydironchest$displayGUIDiamondChest(dchest);
             this.mc.thePlayer.craftingInventory.windowId = packet100openwindow.windowId;
         }
     }

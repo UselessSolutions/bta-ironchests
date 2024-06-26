@@ -21,7 +21,7 @@ public class GuiDiamondChest extends GuiContainer {
 
     @Override
     protected void drawGuiContainerBackgroundLayer(float f) {
-        int i = this.mc.renderEngine.getTexture("/assets/ironchest/gui/containerWide.png");
+        int i = this.mc.renderEngine.getTexture("/assets/ironchest/textures/gui/containerWide.png");
         GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
         this.mc.renderEngine.bindTexture(i);
         int x = (this.width - this.xSize) / 2;

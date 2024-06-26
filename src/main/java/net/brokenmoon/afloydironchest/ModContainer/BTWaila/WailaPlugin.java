@@ -15,7 +15,7 @@ import toufoumaster.btwaila.tooltips.TooltipRegistry;
 public class WailaPlugin implements BTWailaCustomTooltipPlugin {
     @Override
     public void initializePlugin(TooltipRegistry tooltipRegistry, Logger logger) {
-        TileTooltip<IInventory> inventory = ((TileTooltip<IInventory>) BTWailaPlugin.INVENTORY);
+        TileTooltip<IInventory> inventory = BTWailaPlugin.INVENTORY;
         inventory.addClass(TileEntityBigChest.class);
         inventory.addClass(TileEntityDiamondChest.class);
         inventory.addClass(TileEntityGoldChest.class);

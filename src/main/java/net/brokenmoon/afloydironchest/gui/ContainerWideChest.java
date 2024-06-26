@@ -2,7 +2,6 @@ package net.brokenmoon.afloydironchest.gui;
 
 import net.minecraft.core.InventoryAction;
 import net.minecraft.core.entity.player.EntityPlayer;
-import net.minecraft.core.item.ItemStack;
 import net.minecraft.core.player.inventory.Container;
 import net.minecraft.core.player.inventory.IInventory;
 import net.minecraft.core.player.inventory.slot.Slot;
@@ -10,8 +9,8 @@ import net.minecraft.core.player.inventory.slot.Slot;
 import java.util.List;
 
 public class ContainerWideChest extends Container {
-    private IInventory inventory;
-    private int numberOfRowsUpper;
+    private final IInventory inventory;
+    private final int numberOfRowsUpper;
 
     public ContainerWideChest(IInventory lowerInventory, IInventory upperInventory) {
         this.inventory = upperInventory;

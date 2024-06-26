@@ -2,13 +2,14 @@ package net.brokenmoon.afloydironchest.tileEntities;
 
 import com.mojang.nbt.ListTag;
 import net.minecraft.core.block.entity.TileEntity;
+import net.minecraft.core.block.entity.TileEntityChest;
 import net.minecraft.core.entity.player.EntityPlayer;
 import net.minecraft.core.item.ItemStack;
 import net.minecraft.core.player.inventory.IInventory;
 import com.mojang.nbt.CompoundTag;
 import net.minecraft.core.player.inventory.InventorySorter;
 
-public abstract class TileEntityBigChest extends TileEntity implements IInventory {
+public abstract class TileEntityBigChest extends TileEntityChest implements IInventory {
     protected ItemStack[] contents;
 
     @Override

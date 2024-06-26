@@ -43,10 +43,10 @@ public class IronChestMain implements GameStartEntrypoint {
 
     @Override
     public void afterGameStart() {
-        EntityHelper.Core.createTileEntity(TileEntityIronChest.class, "Iron Chest");
-        EntityHelper.Core.createTileEntity(TileEntityGoldChest.class, "Gold Chest");
-        EntityHelper.Core.createTileEntity(TileEntityDiamondChest.class, "Diamond Chest");
-        EntityHelper.Core.createTileEntity(TileEntitySteelChest.class, "Steel Chest");
+        EntityHelper.createTileEntity(TileEntityIronChest.class, "Iron Chest");
+        EntityHelper.createTileEntity(TileEntityGoldChest.class, "Gold Chest");
+        EntityHelper.createTileEntity(TileEntityDiamondChest.class, "Diamond Chest");
+        EntityHelper.createTileEntity(TileEntitySteelChest.class, "Steel Chest");
         LOGGER.info("AFloydIronChest initialized.");
     }
 }

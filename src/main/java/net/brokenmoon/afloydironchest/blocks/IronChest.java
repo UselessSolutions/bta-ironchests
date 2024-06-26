@@ -10,6 +10,7 @@ import net.minecraft.core.entity.EntityItem;
 import net.minecraft.core.entity.player.EntityPlayer;
 import net.minecraft.core.item.ItemStack;
 import net.minecraft.core.player.inventory.IInventory;
+import net.minecraft.core.util.helper.Side;
 import net.minecraft.core.world.World;
 
 import java.util.Random;
@@ -53,10 +54,10 @@ public class IronChest extends BlockTileEntityRotatable {
         super.onBlockRemoved(world, x, y, z, data);
     }
     @Override
-    public boolean blockActivated(World world, int x, int y, int z, EntityPlayer entityplayer) {
+    public boolean onBlockRightClicked(World world, int x, int y, int z, EntityPlayer player, Side side, double xHit, double yHit) {
         IInventory chest = (TileEntityBigChest)world.getBlockTileEntity(x, y, z);
         if (!world.isClientSide) {
-            this.displayGui(entityplayer, chest);
+            this.displayGui(player, chest);
         }
         return true;
     }
@@ -67,6 +68,6 @@ public class IronChest extends BlockTileEntityRotatable {
     }
 
     public void displayGui(EntityPlayer player, IInventory inventory){
-        ((IEntityPlayer)player).displayGUIIronChest(inventory);
+        ((IEntityPlayer)player).afloydironchest$displayGUIIronChest(inventory);
     }
 }

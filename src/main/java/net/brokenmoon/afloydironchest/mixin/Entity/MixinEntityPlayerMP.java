@@ -24,7 +24,7 @@ public class MixinEntityPlayerMP implements IEntityPlayer {
     @Unique
     private final EntityPlayerMP thisAs = (EntityPlayerMP)(Object)this;
     @Unique
-    public void displayGUIIronChest(IInventory iinventory) {
+    public void afloydironchest$displayGUIIronChest(IInventory iinventory) {
         this.getNextWindowId();
         IronChestMain.logNetwork(thisAs.username + " interacted with iron chest at (" + thisAs.x + ", " + thisAs.y + ", " + thisAs.z + ")");
         this.playerNetServerHandler.sendPacket(new Packet100OpenWindow(this.currentWindowId, 0, iinventory.getInvName(), iinventory.getSizeInventory()));
@@ -33,7 +33,7 @@ public class MixinEntityPlayerMP implements IEntityPlayer {
         ((EntityPlayerMP)(Object)this).craftingInventory.onContainerInit(((EntityPlayerMP)(Object)this));
     }
     @Unique
-    public void displayGUIDiamondChest(IInventory iinventory) {
+    public void afloydironchest$displayGUIDiamondChest(IInventory iinventory) {
         this.getNextWindowId();
         IronChestMain.logNetwork(thisAs.username + " interacted with iron chest at (" + thisAs.x + ", " + thisAs.y + ", " + thisAs.z + ")");
         this.playerNetServerHandler.sendPacket(new Packet100OpenWindow(this.currentWindowId, IronChestMain.config.getInt("ids.diamondWindowID"), iinventory.getInvName(), iinventory.getSizeInventory()));

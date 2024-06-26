@@ -16,6 +16,6 @@ public class SteelChest extends IronChest{
         return new TileEntitySteelChest();
     }
     public void displayGui(EntityPlayer player, IInventory inventory){
-        ((IEntityPlayer)player).displayGUIDiamondChest(inventory);
+        ((IEntityPlayer)player).afloydironchest$displayGUIDiamondChest(inventory);
     }
 }

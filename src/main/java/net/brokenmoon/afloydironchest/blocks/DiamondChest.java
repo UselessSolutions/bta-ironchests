@@ -7,8 +7,6 @@ import net.minecraft.core.block.material.Material;
 import net.minecraft.core.entity.player.EntityPlayer;
 import net.minecraft.core.player.inventory.IInventory;
 
-import java.util.Random;
-
 public class DiamondChest extends IronChest{
     public DiamondChest(String key, int id, Material blockMaterial) {
         super(key, id, blockMaterial);
@@ -19,6 +17,6 @@ public class DiamondChest extends IronChest{
     }
 
     public void displayGui(EntityPlayer player, IInventory inventory){
-        ((IEntityPlayer)player).displayGUIDiamondChest(inventory);
+        ((IEntityPlayer)player).afloydironchest$displayGUIDiamondChest(inventory);
     }
 }

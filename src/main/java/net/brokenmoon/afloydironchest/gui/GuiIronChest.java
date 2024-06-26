@@ -6,9 +6,9 @@ import net.minecraft.core.player.inventory.IInventory;
 import org.lwjgl.opengl.GL11;
 
 public class GuiIronChest extends GuiContainer {
-    private IInventory upperChestInventory;
-    private IInventory lowerChestInventory;
-    private int inventoryRows;
+    private final IInventory upperChestInventory;
+    private final IInventory lowerChestInventory;
+    private final int inventoryRows;
 
     public GuiIronChest(IInventory iinventory, IInventory iinventory1) {
         super(new ContainerChest(iinventory, iinventory1));
