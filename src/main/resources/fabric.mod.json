@@ -9,7 +9,7 @@
     "Astoria, Useless"
   ],
   "contributors": [
-    "LukeIsStuff"
+    "LukeIsStuff","sunsetsatellite"
   ],
   "contact": {
     "homepage": "http://broken-moon.net",
@@ -29,6 +29,12 @@
     "recipesReady": [
       "net.brokenmoon.afloydironchest.IronChestRecipes"
     ],
+    "initModels": [
+      "net.brokenmoon.afloydironchest.ModModels"
+    ],
+    "afterBlockInit": [
+      "net.brokenmoon.afloydironchest.ModBlocks"
+    ],
     "btwaila": [
       "net.brokenmoon.afloydironchest.ModContainer.BTWaila.WailaPlugin"
     ]
@@ -39,8 +45,8 @@
 
   "depends": {
     "fabricloader": ">=0.13.3",
-    "halplibe": ">=4.1.3",
-    "minecraft": ">=7.2-beta"
+    "halplibe": ">=5.2.4",
+    "minecraft": ">=7.3.3"
   },
   "suggests": {
     "btwaila": ">=1.0.1"

@@ -4,8 +4,9 @@ import net.brokenmoon.afloydironchest.tileEntities.TileEntityDiamondChest;
 import net.brokenmoon.afloydironchest.tileEntities.TileEntityGoldChest;
 import net.brokenmoon.afloydironchest.tileEntities.TileEntityIronChest;
 import net.brokenmoon.afloydironchest.tileEntities.TileEntitySteelChest;
-import net.fabricmc.api.ModInitializer;
-import net.minecraft.server.net.handler.NetServerHandler;
+import net.minecraft.core.util.HardIllegalArgumentException;
+import net.minecraft.core.util.collection.NamespaceID;
+import net.minecraft.server.net.handler.PacketHandlerServer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import turniplabs.halplibe.helper.EntityHelper;
@@ -33,20 +34,25 @@ public class IronChestMain implements GameStartEntrypoint {
 
 
     public static void logNetwork(String message){ // Might fix some weird class missing crash
-        NetServerHandler.logger.info(message);
+        PacketHandlerServer.LOGGER.info(message);
     }
 
     @Override
     public void beforeGameStart() {
-        ModBlocks.init();
+
     }
 
     @Override
     public void afterGameStart() {
-        EntityHelper.createTileEntity(TileEntityIronChest.class, "Iron Chest");
-        EntityHelper.createTileEntity(TileEntityGoldChest.class, "Gold Chest");
-        EntityHelper.createTileEntity(TileEntityDiamondChest.class, "Diamond Chest");
-        EntityHelper.createTileEntity(TileEntitySteelChest.class, "Steel Chest");
+        try {
+            EntityHelper.createTileEntity(TileEntityIronChest.class, NamespaceID.getPermanent(MOD_ID+":iron_chest"));
+            EntityHelper.createTileEntity(TileEntityGoldChest.class, NamespaceID.getPermanent(MOD_ID+":gold_chest"));
+            EntityHelper.createTileEntity(TileEntityDiamondChest.class, NamespaceID.getPermanent(MOD_ID+":diamond_chest"));
+            EntityHelper.createTileEntity(TileEntitySteelChest.class, NamespaceID.getPermanent(MOD_ID+":steel_chest"));
+        } catch (HardIllegalArgumentException e) {
+            throw new RuntimeException(e);
+        }
+
         LOGGER.info("AFloydIronChest initialized.");
     }
 }

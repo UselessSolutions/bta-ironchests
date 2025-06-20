@@ -1,43 +1,45 @@
 package net.brokenmoon.afloydironchest.tileEntities;
 
-import com.mojang.nbt.ListTag;
-import net.minecraft.core.block.entity.TileEntity;
+import com.mojang.nbt.tags.CompoundTag;
+import com.mojang.nbt.tags.ListTag;
+import net.brokenmoon.afloydironchest.IronChestMain;
 import net.minecraft.core.block.entity.TileEntityChest;
-import net.minecraft.core.entity.player.EntityPlayer;
+import net.minecraft.core.entity.player.Player;
 import net.minecraft.core.item.ItemStack;
-import net.minecraft.core.player.inventory.IInventory;
-import com.mojang.nbt.CompoundTag;
-import net.minecraft.core.player.inventory.InventorySorter;
 
-public abstract class TileEntityBigChest extends TileEntityChest implements IInventory {
+import net.minecraft.core.player.inventory.InventorySorter;
+import net.minecraft.core.player.inventory.container.Container;
+import org.jetbrains.annotations.Nullable;
+
+public abstract class TileEntityBigChest extends TileEntityChest implements Container {
     protected ItemStack[] contents;
 
     @Override
-    public int getSizeInventory() {
+    public int getContainerSize() {
         return contents.length;
     }
 
     @Override
-    public ItemStack getStackInSlot(int i) {
-        return this.contents[i];
+    public @Nullable ItemStack getItem(int index) {
+        return this.contents[index];
     }
 
     @Override
-    public ItemStack decrStackSize(int i, int j) {
-        if (this.contents[i] != null) {
+    public @Nullable ItemStack removeItem(int index, int takeAmount) {
+        if (this.contents[index] != null) {
             ItemStack itemstack1;
-            if (this.contents[i].stackSize <= j) {
-                itemstack1 = this.contents[i];
-                this.contents[i] = null;
-                this.onInventoryChanged();
+            if (this.contents[index].stackSize <= takeAmount) {
+                itemstack1 = this.contents[index];
+                this.contents[index] = null;
+                this.setChanged();
                 return itemstack1;
             } else {
-                itemstack1 = this.contents[i].splitStack(j);
-                if (this.contents[i].stackSize == 0) {
-                    this.contents[i] = null;
+                itemstack1 = this.contents[index].splitStack(takeAmount);
+                if (this.contents[index].stackSize == 0) {
+                    this.contents[index] = null;
                 }
 
-                this.onInventoryChanged();
+                this.setChanged();
                 return itemstack1;
             }
         } else {
@@ -46,24 +48,24 @@ public abstract class TileEntityBigChest extends TileEntityChest implements IInv
     }
 
     @Override
-    public void setInventorySlotContents(int i, ItemStack itemStack) {
+    public void setItem(int i, ItemStack itemStack) {
         this.contents[i] = itemStack;
-        if (itemStack != null && itemStack.stackSize > this.getInventoryStackLimit()) {
-            itemStack.stackSize = this.getInventoryStackLimit();
+        if (itemStack != null && itemStack.stackSize > this.getContainerSize()) {
+            itemStack.stackSize = this.getContainerSize();
         }
 
-        this.onInventoryChanged();
+        this.setChanged();
     }
 
     @Override
-    public String getInvName() {
-        return "Big Chest";
+    public String getNameTranslationKey() {
+        return "container."+ IronChestMain.MOD_ID +".bigChest";
     }
 
     public void readFromNBT(CompoundTag nbttagcompound) {
         super.readFromNBT(nbttagcompound);
         ListTag nbttaglist = nbttagcompound.getList("Items");
-        this.contents = new ItemStack[this.getSizeInventory()];
+        this.contents = new ItemStack[this.getContainerSize()];
 
         for(int i = 0; i < nbttaglist.tagCount(); ++i) {
             CompoundTag nbttagcompound1 = (CompoundTag)nbttaglist.tagAt(i);
@@ -92,19 +94,21 @@ public abstract class TileEntityBigChest extends TileEntityChest implements IInv
     }
 
     @Override
-    public int getInventoryStackLimit() {
+    public int getMaxStackSize() {
         return 64;
     }
 
     @Override
-    public boolean canInteractWith(EntityPlayer entityPlayer) {
-        if (this.worldObj.getBlockTileEntity(this.x, this.y, this.z) != this) {
+    public boolean stillValid(Player entityPlayer) {
+        if (this.worldObj.getTileEntity(this.x, this.y, this.z) != this) {
             return false;
         } else {
             return entityPlayer.distanceToSqr((double)this.x + 0.5, (double)this.y + 0.5, (double)this.z + 0.5) <= 64.0;
         }
     }
-    public void sortInventory(){
+
+    @Override
+    public void sortContainer() {
         InventorySorter.sortInventory(this.contents);
     }
 }

@@ -3,36 +3,39 @@ package net.brokenmoon.afloydironchest.blocks;
 import net.brokenmoon.afloydironchest.MixinInterfaces.IEntityPlayer;
 import net.brokenmoon.afloydironchest.tileEntities.TileEntityBigChest;
 import net.brokenmoon.afloydironchest.tileEntities.TileEntityIronChest;
-import net.minecraft.core.block.BlockTileEntityRotatable;
-import net.minecraft.core.block.entity.TileEntity;
+import net.minecraft.core.block.Block;
+import net.minecraft.core.block.BlockLogicRotatable;
 import net.minecraft.core.block.material.Material;
 import net.minecraft.core.entity.EntityItem;
-import net.minecraft.core.entity.player.EntityPlayer;
+import net.minecraft.core.entity.player.Player;
 import net.minecraft.core.item.ItemStack;
-import net.minecraft.core.player.inventory.IInventory;
+
+import net.minecraft.core.player.inventory.container.Container;
 import net.minecraft.core.util.helper.Side;
 import net.minecraft.core.world.World;
 
 import java.util.Random;
 
-public class IronChest extends BlockTileEntityRotatable {
+public class IronChest extends BlockLogicRotatable {
 
     Random random = new Random();
-    public IronChest(String key, int id, Material blockMaterial){
-        super(key,id, blockMaterial);
+
+    public IronChest(Block<?> block, Material material) {
+        super(block, material);
+        block.withEntity(TileEntityIronChest::new);
     }
 
     @Override
-    public void onBlockAdded(World world, int x, int y, int z) {
-        super.onBlockAdded(world, x, y, z);
-        this.setDefaultDirection(world, x, y, z);
+    public void onBlockPlacedByWorld(World world, int x, int y, int z) {
+        super.onBlockPlacedByWorld(world, x, y, z);
+        setDefaultDirection(world, x, y, z);
     }
 
     @Override
     public void onBlockRemoved(World world, int x, int y, int z, int data) {
-        TileEntityBigChest te = (TileEntityBigChest)world.getBlockTileEntity(x, y, z);
-        for (int l = 0; l < te.getSizeInventory(); ++l) {
-            ItemStack itemstack = te.getStackInSlot(l);
+        TileEntityBigChest te = (TileEntityBigChest)world.getTileEntity(x, y, z);
+        for (int l = 0; l < te.getContainerSize(); ++l) {
+            ItemStack itemstack = te.getItem(l);
             if (itemstack == null) continue;
             float f = this.random.nextFloat() * 0.8f + 0.1f;
             float f1 = this.random.nextFloat() * 0.8f + 0.1f;
@@ -53,21 +56,17 @@ public class IronChest extends BlockTileEntityRotatable {
         }
         super.onBlockRemoved(world, x, y, z, data);
     }
+    
     @Override
-    public boolean onBlockRightClicked(World world, int x, int y, int z, EntityPlayer player, Side side, double xHit, double yHit) {
-        IInventory chest = (TileEntityBigChest)world.getBlockTileEntity(x, y, z);
+    public boolean onBlockRightClicked(World world, int x, int y, int z, Player player, Side side, double xHit, double yHit) {
+        Container chest = (TileEntityBigChest)world.getTileEntity(x, y, z);
         if (!world.isClientSide) {
             this.displayGui(player, chest);
         }
         return true;
     }
 
-    @Override
-    protected TileEntity getNewBlockEntity() {
-        return new TileEntityIronChest();
-    }
-
-    public void displayGui(EntityPlayer player, IInventory inventory){
+    public void displayGui(Player player, Container inventory){
         ((IEntityPlayer)player).afloydironchest$displayGUIIronChest(inventory);
     }
 }
