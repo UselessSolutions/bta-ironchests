@@ -4,11 +4,13 @@ import com.mojang.nbt.tags.CompoundTag;
 import com.mojang.nbt.tags.ListTag;
 import net.brokenmoon.afloydironchest.IronChestMain;
 import net.minecraft.core.block.entity.TileEntityChest;
+import net.minecraft.core.entity.Entity;
 import net.minecraft.core.entity.player.Player;
 import net.minecraft.core.item.ItemStack;
 
 import net.minecraft.core.player.inventory.InventorySorter;
 import net.minecraft.core.player.inventory.container.Container;
+import net.minecraft.core.world.World;
 import org.jetbrains.annotations.Nullable;
 
 public abstract class TileEntityBigChest extends TileEntityChest implements Container {
@@ -110,5 +112,10 @@ public abstract class TileEntityBigChest extends TileEntityChest implements Cont
     @Override
     public void sortContainer() {
         InventorySorter.sortInventory(this.contents);
+    }
+
+    @Override
+    public boolean canBeCarried(World world, Entity potentialHolder) {
+        return true;
     }
 }
