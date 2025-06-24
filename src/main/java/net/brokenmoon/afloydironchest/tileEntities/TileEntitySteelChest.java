@@ -9,6 +9,6 @@ public class TileEntitySteelChest extends TileEntityBigChest {
     }
     @Override
     public String getNameTranslationKey() {
-        return "container."+ IronChestMain.MOD_ID +".steelChest";
+        return "container."+ IronChestMain.MOD_ID +".steelChest.name";
     }
 }
