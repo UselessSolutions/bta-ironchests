@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
-  "id": "reinforcedchest",
+  "id": "ironchest",
   "version": "$version",
 
-  "name": "Midford's Reinforced Chest",
-  "description": "Simple expanded chest mod for a simple expanded chests mod.",
+  "name": "Astoria's Iron Chests",
+  "description": "Simple expanded chests mod.",
   "authors": [
-    "Midford, Useless"
+    "Astoria, Useless"
   ],
   "contributors": [
-    "sunsetsatellite"
+    "LukeIsStuff","sunsetsatellite"
   ],
   "contact": {
-    "homepage": "",
+    "homepage": "http://broken-moon.net",
     "sources": ""
   },
 
@@ -21,33 +21,32 @@
   "environment": "*",
   "entrypoints": {
     "beforeGameStart": [
-      "midford.reinforcedchest.IronChestMain"
+      "net.brokenmoon.afloydironchest.IronChestMain"
     ],
     "afterGameStart": [
-      "midford.reinforcedchest.IronChestMain"
+      "net.brokenmoon.afloydironchest.IronChestMain"
     ],
     "recipesReady": [
-      "midford.reinforcedchest.IronChestRecipes"
+      "net.brokenmoon.afloydironchest.IronChestRecipes"
     ],
     "initModels": [
-      "midford.reinforcedchest.ModModels"
+      "net.brokenmoon.afloydironchest.ModModels"
     ],
     "afterBlockInit": [
-      "midford.reinforcedchest.ModBlocks"
+      "net.brokenmoon.afloydironchest.ModBlocks"
     ],
     "btwaila": [
-      "midford.reinforcedchest.api.BTWaila.WailaPlugin"
+      "net.brokenmoon.afloydironchest.api.BTWaila.WailaPlugin"
     ]
   },
   "mixins": [
-    "reinforcedchest.mixins.json"
+    "afloydironchest.mixins.json"
   ],
 
   "depends": {
     "fabricloader": ">=0.13.3",
     "halplibe": ">=5.2.4",
-    "minecraft": ">=7.3.3",
-    "ironchest": "*"
+    "minecraft": ">=7.3.3"
   },
   "suggests": {
     "btwaila": ">=1.0.1"
