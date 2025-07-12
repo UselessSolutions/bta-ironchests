@@ -1,6 +1,7 @@
 package net.brokenmoon.afloydironchest.gui;
 
 
+import net.brokenmoon.afloydironchest.menu.MenuWideChest;
 import net.minecraft.client.gui.container.ScreenContainerAbstract;
 import net.minecraft.core.player.inventory.container.Container;
 import org.lwjgl.opengl.GL11;

@@ -2,7 +2,7 @@ package net.brokenmoon.afloydironchest.mixin.Entity;
 
 import net.brokenmoon.afloydironchest.IronChestMain;
 import net.brokenmoon.afloydironchest.MixinInterfaces.IEntityPlayer;
-import net.brokenmoon.afloydironchest.gui.MenuWideChest;
+import net.brokenmoon.afloydironchest.menu.MenuWideChest;
 import net.minecraft.core.net.packet.PacketContainerOpen;
 
 import net.minecraft.core.player.inventory.container.Container;

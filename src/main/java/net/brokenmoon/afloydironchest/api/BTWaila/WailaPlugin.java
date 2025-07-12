@@ -1,4 +1,4 @@
-package net.brokenmoon.afloydironchest.ModContainer.BTWaila;
+package net.brokenmoon.afloydironchest.api.BTWaila;
 
 import net.brokenmoon.afloydironchest.tileEntities.TileEntityBigChest;
 import net.brokenmoon.afloydironchest.tileEntities.TileEntityDiamondChest;

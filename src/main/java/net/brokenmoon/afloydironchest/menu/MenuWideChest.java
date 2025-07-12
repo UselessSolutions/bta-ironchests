@@ -1,4 +1,4 @@
-package net.brokenmoon.afloydironchest.gui;
+package net.brokenmoon.afloydironchest.menu;
 
 import net.minecraft.core.InventoryAction;
 import net.minecraft.core.entity.player.Player;
