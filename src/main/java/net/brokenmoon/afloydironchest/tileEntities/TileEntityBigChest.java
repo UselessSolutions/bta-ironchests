@@ -52,8 +52,8 @@ public abstract class TileEntityBigChest extends TileEntityChest implements Cont
     @Override
     public void setItem(int i, ItemStack itemStack) {
         this.contents[i] = itemStack;
-        if (itemStack != null && itemStack.stackSize > this.getContainerSize()) {
-            itemStack.stackSize = this.getContainerSize();
+        if (itemStack != null && itemStack.stackSize > this.getMaxStackSize()) {
+            itemStack.stackSize = this.getMaxStackSize();
         }
 
         this.setChanged();
