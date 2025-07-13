@@ -25,7 +25,7 @@ public class ScreenIronChest extends ScreenContainerAbstract {
 
     @Override
     protected void drawGuiContainerForegroundLayer() {
-        this.font.drawString(I18n.getInstance().translateNameKey(this.lowerChestInventory.getNameTranslationKey()), 8, 6, 0x404040);
+        this.font.drawString(I18n.getInstance().translateKey(this.lowerChestInventory.getNameTranslationKey()), 8, 6, 0x404040);
         this.font.drawString(I18n.getInstance().translateKey(this.upperChestInventory.getNameTranslationKey()), 8, this.ySize - 96 + 2, 0x404040);
     }
 
