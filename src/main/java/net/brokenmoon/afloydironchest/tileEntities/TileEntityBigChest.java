@@ -10,10 +10,14 @@ import net.minecraft.core.item.ItemStack;
 
 import net.minecraft.core.player.inventory.InventorySorter;
 import net.minecraft.core.player.inventory.container.Container;
+import net.minecraft.core.world.ICarriable;
+import net.minecraft.core.world.ICarrySource;
 import net.minecraft.core.world.World;
+import net.minecraft.core.world.pos.TilePosc;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public abstract class TileEntityBigChest extends TileEntityChest implements Container {
+public abstract class TileEntityBigChest extends TileEntityChest implements Container, ICarrySource {
     protected ItemStack[] contents;
 
     @Override
@@ -64,8 +68,8 @@ public abstract class TileEntityBigChest extends TileEntityChest implements Cont
         return "container."+ IronChestMain.MOD_ID +".bigChest";
     }
 
-    public void readFromNBT(CompoundTag nbttagcompound) {
-        super.readFromNBT(nbttagcompound);
+
+    public void readAdditionalData(CompoundTag nbttagcompound) {
         ListTag nbttaglist = nbttagcompound.getList("Items");
         this.contents = new ItemStack[this.getContainerSize()];
 
@@ -79,8 +83,7 @@ public abstract class TileEntityBigChest extends TileEntityChest implements Cont
 
     }
 
-    public void writeToNBT(CompoundTag nbttagcompound) {
-        super.writeToNBT(nbttagcompound);
+    public void writeAdditionalData(CompoundTag nbttagcompound) {
         ListTag nbttaglist = new ListTag();
 
         for(int i = 0; i < this.contents.length; ++i) {
@@ -102,20 +105,19 @@ public abstract class TileEntityBigChest extends TileEntityChest implements Cont
 
     @Override
     public boolean stillValid(Player entityPlayer) {
-        if (this.worldObj.getTileEntity(this.x, this.y, this.z) != this) {
+        if (this.worldObj.getTileEntity(this.tilePos.x, this.tilePos.y, this.tilePos.z) != this) {
             return false;
         } else {
-            return entityPlayer.distanceToSqr((double)this.x + 0.5, (double)this.y + 0.5, (double)this.z + 0.5) <= 64.0;
+            return entityPlayer.distanceToSqr((double)this.tilePos.x + 0.5, (double)this.tilePos.y + 0.5, (double)this.tilePos.z + 0.5) <= 64.0;
         }
     }
 
-    @Override
-    public void sortContainer() {
+
+    public void sort() {
         InventorySorter.sortInventory(this.contents);
     }
 
-    @Override
-    public boolean canBeCarried(World world, Entity potentialHolder) {
-        return true;
-    }
+	public @Nullable ICarriable pickup(@NotNull World world, @NotNull Entity holder, @NotNull TilePosc tilePos_) {
+		return super.pickup(world, holder, tilePos_);
+	}
 }

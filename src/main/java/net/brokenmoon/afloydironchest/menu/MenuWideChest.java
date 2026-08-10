@@ -1,5 +1,6 @@
 package net.brokenmoon.afloydironchest.menu;
 
+import it.unimi.dsi.fastutil.ints.IntList;
 import net.minecraft.core.InventoryAction;
 import net.minecraft.core.entity.player.Player;
 
@@ -36,7 +37,7 @@ public class MenuWideChest extends MenuAbstract {
     }
 
     @Override
-    public List<Integer> getMoveSlots(InventoryAction action, Slot slot, int target, Player player) {
+    public IntList getMoveSlots(InventoryAction action, Slot slot, int target, Player player) {
         int chestSize = this.numberOfRowsUpper * 12;
         if (slot.index >= 0 && slot.index < chestSize) {
             return this.getSlots(0, chestSize, false);
@@ -55,7 +56,7 @@ public class MenuWideChest extends MenuAbstract {
     }
 
     @Override
-    public List<Integer> getTargetSlots(InventoryAction action, Slot slot, int target, Player player) {
+    public IntList getTargetSlots(InventoryAction action, Slot slot, int target, Player player) {
         int chestSize = this.numberOfRowsUpper * 12;
         if (slot.index < chestSize) {
             return this.getSlots(chestSize, 36, true);

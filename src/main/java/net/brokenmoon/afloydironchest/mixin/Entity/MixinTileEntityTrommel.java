@@ -1,11 +1,13 @@
 package net.brokenmoon.afloydironchest.mixin.Entity;
 
+import com.mojang.nbt.tags.CompoundTag;
 import net.brokenmoon.afloydironchest.blocks.IronChest;
 import net.minecraft.core.block.Block;
 import net.minecraft.core.block.entity.TileEntity;
 import net.minecraft.core.block.entity.TileEntityTrommel;
 import net.minecraft.core.item.ItemStack;
 
+import org.jetbrains.annotations.NotNull;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -14,6 +16,15 @@ import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 
 @Mixin(value = TileEntityTrommel.class,remap = false)
 public class MixinTileEntityTrommel extends TileEntity {
+	@Override
+	public void readAdditionalData(@NotNull CompoundTag compoundTag) {
+
+	}
+
+	@Override
+	public void writeAdditionalData(@NotNull CompoundTag compoundTag) {
+
+	}
 //    @Inject(method = "sieveItem(I)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/core/world/World;getBlockId(III)I", shift = At.Shift.BY, by = 2), locals = LocalCapture.CAPTURE_FAILSOFT, cancellable = true)
 //    private void addIronChestToTrommel(int slotIndex, CallbackInfo ci, ItemStack itemResult, int xOffset, int zOffset, int meta, int adjacentId){
 //        Container chest = null;
