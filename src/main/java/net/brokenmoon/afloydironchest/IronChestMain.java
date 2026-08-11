@@ -5,7 +5,6 @@ import net.brokenmoon.afloydironchest.tileEntities.TileEntityGoldChest;
 import net.brokenmoon.afloydironchest.tileEntities.TileEntityIronChest;
 import net.brokenmoon.afloydironchest.tileEntities.TileEntitySteelChest;
 import net.fabricmc.api.ModInitializer;
-import net.minecraft.core.util.HardIllegalArgumentException;
 import net.minecraft.core.util.collection.NamespaceID;
 import net.minecraft.server.net.handler.PacketHandlerServer;
 import org.slf4j.Logger;

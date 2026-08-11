@@ -5,7 +5,6 @@ import net.brokenmoon.afloydironchest.menu.MenuWideChest;
 import net.minecraft.client.gui.container.ScreenContainerAbstract;
 import net.minecraft.client.render.renderer.GLRenderer;
 import net.minecraft.core.player.inventory.container.Container;
-import org.lwjgl.opengl.GL11;
 
 public class ScreenDiamondChest extends ScreenContainerAbstract {
     private Container upperChestInventory;

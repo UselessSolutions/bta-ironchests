@@ -3,13 +3,9 @@ package net.brokenmoon.afloydironchest.menu;
 import it.unimi.dsi.fastutil.ints.IntList;
 import net.minecraft.core.InventoryAction;
 import net.minecraft.core.entity.player.Player;
-
-
 import net.minecraft.core.player.inventory.container.Container;
 import net.minecraft.core.player.inventory.menu.MenuAbstract;
 import net.minecraft.core.player.inventory.slot.Slot;
-
-import java.util.List;
 
 public class MenuWideChest extends MenuAbstract {
     private final Container inventory;

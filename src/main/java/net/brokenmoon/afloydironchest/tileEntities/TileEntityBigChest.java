@@ -64,7 +64,7 @@ public abstract class TileEntityBigChest extends TileEntityChest implements Cont
     }
 
     @Override
-    public String getNameTranslationKey() {
+    public @NotNull String getNameTranslationKey() {
         return "container."+ IronChestMain.MOD_ID +".bigChest";
     }
 
@@ -83,7 +83,7 @@ public abstract class TileEntityBigChest extends TileEntityChest implements Cont
 
     }
 
-    public void writeAdditionalData(CompoundTag nbttagcompound) {
+    public void writeAdditionalData(@NotNull CompoundTag nbttagcompound) {
         ListTag nbttaglist = new ListTag();
 
         for(int i = 0; i < this.contents.length; ++i) {
@@ -104,8 +104,8 @@ public abstract class TileEntityBigChest extends TileEntityChest implements Cont
     }
 
     @Override
-    public boolean stillValid(Player entityPlayer) {
-        if (this.worldObj.getTileEntity(this.tilePos.x, this.tilePos.y, this.tilePos.z) != this) {
+    public boolean stillValid(@NotNull Player entityPlayer) {
+        if (this.worldObj.getTileEntity(tilePos) != this) {
             return false;
         } else {
             return entityPlayer.distanceToSqr((double)this.tilePos.x + 0.5, (double)this.tilePos.y + 0.5, (double)this.tilePos.z + 0.5) <= 64.0;

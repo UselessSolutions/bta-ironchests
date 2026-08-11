@@ -1,12 +1,10 @@
 package net.brokenmoon.afloydironchest.gui;
 
 import net.minecraft.client.gui.container.ScreenContainerAbstract;
-
 import net.minecraft.client.render.renderer.GLRenderer;
 import net.minecraft.core.lang.I18n;
 import net.minecraft.core.player.inventory.container.Container;
 import net.minecraft.core.player.inventory.menu.MenuContainer;
-import org.lwjgl.opengl.GL11;
 
 public class ScreenIronChest extends ScreenContainerAbstract {
     private final Container upperChestInventory;

@@ -1,6 +1,5 @@
 package net.brokenmoon.afloydironchest;
 
-import net.minecraft.core.item.Item;
 import net.minecraft.core.item.Items;
 import turniplabs.halplibe.helper.RecipeBuilder;
 
