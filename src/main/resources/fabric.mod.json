@@ -9,7 +9,7 @@
     "Astoria, Useless"
   ],
   "contributors": [
-    "LukeIsStuff","sunsetsatellite"
+    "LukeIsStuff","sunsetsatellite","The_Midford"
   ],
   "contact": {
     "homepage": "http://broken-moon.net",
@@ -20,20 +20,11 @@
 
   "environment": "*",
   "entrypoints": {
-    "beforeGameStart": [
+    "main": [
       "net.brokenmoon.afloydironchest.IronChestMain"
     ],
-    "afterGameStart": [
-      "net.brokenmoon.afloydironchest.IronChestMain"
-    ],
-    "recipesReady": [
-      "net.brokenmoon.afloydironchest.IronChestRecipes"
-    ],
-    "initModels": [
-      "net.brokenmoon.afloydironchest.ModModels"
-    ],
-    "afterBlockInit": [
-      "net.brokenmoon.afloydironchest.ModBlocks"
+    "client": [
+      "net.brokenmoon.afloydironchest.IronChestClient"
     ],
     "btwaila": [
       "net.brokenmoon.afloydironchest.api.BTWaila.WailaPlugin"

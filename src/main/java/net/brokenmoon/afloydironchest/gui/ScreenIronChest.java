@@ -1,11 +1,10 @@
 package net.brokenmoon.afloydironchest.gui;
 
 import net.minecraft.client.gui.container.ScreenContainerAbstract;
-
+import net.minecraft.client.render.renderer.GLRenderer;
 import net.minecraft.core.lang.I18n;
 import net.minecraft.core.player.inventory.container.Container;
 import net.minecraft.core.player.inventory.menu.MenuContainer;
-import org.lwjgl.opengl.GL11;
 
 public class ScreenIronChest extends ScreenContainerAbstract {
     private final Container upperChestInventory;
@@ -25,14 +24,14 @@ public class ScreenIronChest extends ScreenContainerAbstract {
 
     @Override
     protected void drawGuiContainerForegroundLayer() {
-        this.font.drawString(I18n.getInstance().translateKey(this.lowerChestInventory.getNameTranslationKey()), 8, 6, 0x404040);
-        this.font.drawString(I18n.getInstance().translateKey(this.upperChestInventory.getNameTranslationKey()), 8, this.ySize - 96 + 2, 0x404040);
+        this.drawStringNoShadow(this.fontRenderer,I18n.getInstance().translateKey(this.lowerChestInventory.getNameTranslationKey()), 8, 6, 0x404040);
+        this.drawStringNoShadow(this.fontRenderer,I18n.getInstance().translateKey(this.upperChestInventory.getNameTranslationKey()), 8, this.ySize - 96 + 2, 0x404040);
     }
 
     @Override
     protected void drawGuiContainerBackgroundLayer(float f) {
         this.mc.textureManager.loadTexture("/gui/container.png").bind();
-        GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
+        GLRenderer.setColor4f(1.0f, 1.0f, 1.0f, 1.0f);
         int x = (this.width - this.xSize) / 2;
         int y = (this.height - this.ySize) / 2;
         int h1 = Math.min(this.inventoryRows, 6) * 18 + 17;

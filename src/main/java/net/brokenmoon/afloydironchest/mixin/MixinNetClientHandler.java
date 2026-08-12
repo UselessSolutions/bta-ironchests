@@ -19,12 +19,12 @@ public class MixinNetClientHandler {
     @Shadow
     private Minecraft mc;
 
-    @Inject(method = "handleOpenWindow", at = @At("TAIL"))
+    @Inject(method = "handleContainerOpen", at = @At("TAIL"))
     public void injectMethod(PacketContainerOpen packet100openwindow, CallbackInfo info) {
         if (packet100openwindow.inventoryType == IronChestMain.config.getInt("ids.diamondWindowID")) {
             TileEntityDiamondChest dchest = new TileEntityDiamondChest();
             ((IEntityPlayer)this.mc.thePlayer).afloydironchest$displayGUIDiamondChest(dchest);
-            this.mc.thePlayer.craftingInventory.containerId = packet100openwindow.windowId;
+            this.mc.thePlayer.containerMenu.containerId = packet100openwindow.windowId;
         }
     }
 }

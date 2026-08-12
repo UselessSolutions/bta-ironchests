@@ -2,6 +2,7 @@ package net.brokenmoon.afloydironchest.tileEntities;
 
 import net.brokenmoon.afloydironchest.IronChestMain;
 import net.minecraft.core.item.ItemStack;
+import org.jetbrains.annotations.NotNull;
 
 public class TileEntityGoldChest extends TileEntityBigChest {
     public TileEntityGoldChest(){
@@ -9,7 +10,7 @@ public class TileEntityGoldChest extends TileEntityBigChest {
     }
 
     @Override
-    public String getNameTranslationKey() {
+    public @NotNull String getNameTranslationKey() {
         return "container."+ IronChestMain.MOD_ID +".goldChest.name";
     }
 }

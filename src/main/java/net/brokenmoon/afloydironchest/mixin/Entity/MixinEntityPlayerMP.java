@@ -29,17 +29,17 @@ public class MixinEntityPlayerMP implements IEntityPlayer {
         this.getNextWindowId();
         IronChestMain.logNetwork(thisAs.username + " interacted with iron chest at (" + thisAs.x + ", " + thisAs.y + ", " + thisAs.z + ")");
         this.playerNetServerHandler.sendPacket(new PacketContainerOpen(this.currentWindowId, 0, iinventory.getNameTranslationKey(), iinventory.getContainerSize()));
-        thisAs.craftingInventory = new MenuContainer(thisAs.inventory, iinventory);
-        thisAs.craftingInventory.containerId = this.currentWindowId;
-        thisAs.craftingInventory.addSlotListener(thisAs);
+        thisAs.containerMenu = new MenuContainer(thisAs.inventory, iinventory);
+        thisAs.containerMenu.containerId = this.currentWindowId;
+        thisAs.containerMenu.addSlotListener(thisAs);
     }
     @Unique
     public void afloydironchest$displayGUIDiamondChest(Container iinventory) {
         this.getNextWindowId();
         IronChestMain.logNetwork(thisAs.username + " interacted with iron chest at (" + thisAs.x + ", " + thisAs.y + ", " + thisAs.z + ")");
         this.playerNetServerHandler.sendPacket(new PacketContainerOpen(this.currentWindowId, IronChestMain.config.getInt("ids.diamondWindowID"), iinventory.getNameTranslationKey(), iinventory.getContainerSize()));
-        thisAs.craftingInventory = new MenuWideChest(thisAs.inventory, iinventory);
-        thisAs.craftingInventory.containerId = this.currentWindowId;
-        thisAs.craftingInventory.addSlotListener(thisAs);
+        thisAs.containerMenu = new MenuWideChest(thisAs.inventory, iinventory);
+        thisAs.containerMenu.containerId = this.currentWindowId;
+        thisAs.containerMenu.addSlotListener(thisAs);
     }
 }

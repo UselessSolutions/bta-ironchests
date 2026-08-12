@@ -1,13 +1,10 @@
 package net.brokenmoon.afloydironchest;
 
-import net.minecraft.core.item.Item;
 import net.minecraft.core.item.Items;
 import turniplabs.halplibe.helper.RecipeBuilder;
-import turniplabs.halplibe.util.RecipeEntrypoint;
 
-public class IronChestRecipes implements RecipeEntrypoint {
-    @Override
-    public void onRecipesReady() {
+public class IronChestRecipes {
+    public static void onRecipesReady() {
         RecipeBuilder.Shaped(IronChestMain.MOD_ID)
             .setShape(
                 "AAA",
@@ -45,8 +42,7 @@ public class IronChestRecipes implements RecipeEntrypoint {
             .create("diamond_chest", ModBlocks.steelChest.getDefaultStack());
     }
 
-    @Override
-    public void initNamespaces() {
+    public static void initNamespaces() {
         RecipeBuilder.initNameSpace(IronChestMain.MOD_ID);
     }
 }
