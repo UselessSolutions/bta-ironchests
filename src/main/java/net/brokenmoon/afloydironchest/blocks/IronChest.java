@@ -71,4 +71,5 @@ public class IronChest extends BlockLogicRotatable {
     public void displayGui(Player player, Container inventory){
         ((IEntityPlayer)player).afloydironchest$displayGUIIronChest(inventory);
     }
+
 }
