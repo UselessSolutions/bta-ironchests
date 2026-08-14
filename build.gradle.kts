@@ -39,7 +39,6 @@ dependencies {
 	implementation(libs.loader)
 	implementation(libs.halplibe) // If you do not need halplibe you can delete this line
 	implementation(project.files("lib/btwaila-1.3.0.jar"))
-
 	// Only required at compilation
 	// provides documentation, can be removed if that isn't needed
 	compileOnly(libs.bundles.btaLwjgl)

@@ -38,7 +38,7 @@ public class IronChestMain implements ModInitializer {
 		CommonEvents.AFTER_BLOCK_INIT.listen(Key.of(MOD_ID),ModBlocks::afterBlockInit);
 		CommonEvents.RECIPES_READY.listen(Key.of(MOD_ID),IronChestRecipes::onRecipesReady);
 		CommonEvents.RECIPES_NAMESPACE_INIT.listen(Key.of(MOD_ID),IronChestRecipes::initNamespaces);
-		CommonEvents.AFTER_GAME_START.listen(Key.of(MOD_ID),this::afterGameStart);
+		CommonEvents.BEFORE_GAME_START.listen(Key.of(MOD_ID),this::beforeGameStart);
 	}
 
 
@@ -48,18 +48,16 @@ public class IronChestMain implements ModInitializer {
 
 
     public void beforeGameStart() {
-
+		EntityHelper.addMapping(TileEntityIronChest.class,new NamespaceID(MOD_ID,"iron_chest"));
+		EntityHelper.addMapping(TileEntityGoldChest.class,new NamespaceID(MOD_ID,"gold_chest"));
+		EntityHelper.addMapping(TileEntityDiamondChest.class,new NamespaceID(MOD_ID,"diamond_chest"));
+		EntityHelper.addMapping(TileEntitySteelChest.class,new NamespaceID(MOD_ID,"steel_chest"));
+		LOGGER.info("AFloydIronChest initialized.");
     }
 
 
     public void afterGameStart() {
-            EntityHelper.addMapping(TileEntityIronChest.class,new NamespaceID(MOD_ID,"iron_chest"));
-            EntityHelper.addMapping(TileEntityGoldChest.class,new NamespaceID(MOD_ID,"gold_chest"));
-            EntityHelper.addMapping(TileEntityDiamondChest.class,new NamespaceID(MOD_ID,"diamond_chest"));
-            EntityHelper.addMapping(TileEntitySteelChest.class,new NamespaceID(MOD_ID,"steel_chest"));
 
-
-        LOGGER.info("AFloydIronChest initialized.");
     }
 
 }
