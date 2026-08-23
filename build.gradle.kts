@@ -1,18 +1,25 @@
+import groovy.namespace.QName
+import groovy.util.Node
+import groovy.xml.XmlParser
+import java.io.IOException
+import java.net.URL
+
 plugins {
 	alias(libs.plugins.loom)
     java
+	`maven-publish`
 }
 
 val lwjglNatives = resolveLwjglNatives()
 
-val modVersion = "${providers.gradleProperty("mod_version").get()}+${libs.versions.bta.get()}"
-val modGroup: Provider<String> = providers.gradleProperty("mod_group")
-val modName: Provider<String> = providers.gradleProperty("mod_name")
+val modVersion: String = project.properties["mod_version"].toString()
+val modGroup: String = project.properties["mod_group"].toString()
+val modName: String = project.properties["mod_name"].toString()
 
 val javaVersion: Provider<Int> = libs.versions.java.map { it.toInt() }
 
 base.archivesName = modName
-group = modGroup.get()
+group = modGroup
 version = modVersion
 loom {
 	val btaChannel = libs.versions.btaChannel.get()
@@ -157,5 +164,50 @@ fun resolveLwjglNatives(): String { // Sourced from https://www.lwjgl.org/
 			else ->
 				throw Error("Unrecognized or unsupported platform. Please set \"lwjglNatives\" manually")
 		}
+	}
+}
+
+publishing {
+	if(checkVersion(modGroup, modName, modVersion)){
+		repositories {
+			maven {
+				name = "signalumMaven"
+				url = uri("https://maven.thesignalumproject.net/releases")
+				credentials(PasswordCredentials::class)
+				authentication {
+					create<BasicAuthentication>("basic")
+				}
+			}
+
+			publications {
+				create<MavenPublication>("maven") {
+					groupId = modGroup
+					artifactId = modName
+					version = modVersion
+					from(components["java"])
+				}
+			}
+		}
+	}
+}
+
+fun checkVersion(group: String, name: String, version: String): Boolean {
+	return !(rootProject.property("check_versions") as String).toBoolean() || try {
+		val xml = URL("https://maven.thesignalumproject.net/releases/$group/$name/maven-metadata.xml").readText()
+		val metadata = XmlParser().parseText(xml)
+
+		val versions = metadata.getAt(QName("versioning")).getAt("versions").getAt("version").map { (it as Node).text() }
+
+		if (version in versions) {
+			System.err.println("Version $version of $group.$name already exists!")
+			false
+		} else {
+			System.out.println("Version $version of $group.$name ready to release!")
+			true
+		}
+	} catch (e: IOException) {
+		System.err.println("Failed to check version for $group.$name!")
+		e.printStackTrace()
+		true
 	}
 }
