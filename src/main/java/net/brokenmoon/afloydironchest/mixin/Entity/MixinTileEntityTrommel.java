@@ -13,17 +13,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 
 @Mixin(value = TileEntityTrommel.class, remap = false)
-public class MixinTileEntityTrommel extends TileEntity {
-
-	@Override
-	public void readAdditionalData(@NotNull CompoundTag compoundTag) {
-
-	}
-
-	@Override
-	public void writeAdditionalData(@NotNull CompoundTag compoundTag) {
-
-	}
+public abstract class MixinTileEntityTrommel extends TileEntity {
 
 	@ModifyExpressionValue(method = "sieveItem",at = @At(value = "INVOKE", target = "Lnet/minecraft/core/block/Block;hasLogicClass(Lnet/minecraft/core/block/Block;Ljava/lang/Class;)Z"))
 	public boolean addTheFuckingThing(boolean original,@Local(name = "adjacentId") int adjacentId){
